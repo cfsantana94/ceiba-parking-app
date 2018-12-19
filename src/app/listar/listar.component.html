@@ -1,0 +1,29 @@
+<div class="table-responsive">
+
+    <h2>Vehiculos activos</h2>
+    <table class="table" mdbTable responsive="true">
+        <thead class="grey lighten-1 black-text">
+            <tr>
+              <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr mdbTableCol *ngFor="let vehiculo of vehiculo">
+                <td>{{vehiculo.tipoVehiculo}}</td>
+                <td>{{vehiculo.placa}}</td>
+                <td>{{vehiculo.fechaEntrada}}</td>
+                <td>{{vehiculo.fechaSalida}}</td>
+                <td>{{vehiculo.cilindraje}}</td>
+                <td>{{vehiculo.valorACobrar}}</td>
+                <td>
+                    <button class="btn btn-success" (click)="editBill(billOut)">
+                        Salida
+                        </button>
+                </td>
+              </tr>
+          </tbody>
+    </table>
+    
+    
+
+</div>
