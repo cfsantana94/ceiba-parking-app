@@ -1,0 +1,28 @@
+
+
+
+<div class="container-contact100">
+    <div class="wrap-contact100">
+        <form #vehiculoForm="ngForm" (ngSubmit)="registrarVehiculo()" class="contact100-form validate-form">
+            <div class="row">
+                <div class="col">
+                    <input [(ngModel)]="vehiculo.placa" id="placa" name="placa" type="text" class="form-control"
+                        placeholder="PLACA" required #placa="ngModel">
+
+                </div>
+                <div class="col form-group">
+                    <select class="form-control" [(ngModel)]="vehiculo.tipoVehiculo" name="tipoVehiculo" id="inputState">
+                        <option id="carro"  value="CARRO" >CARRO</option>
+                        <option id="moto"  value="MOTO" >MOTO</option>
+
+                    </select>
+                </div>
+                <div class="wrap-contact100-form-range" [hidden]="vehiculo.tipoVehiculo != 'MOTO'">
+                    <span class="label-input100">Cilindraje *</span>
+                    <input class="form-control input100" type="number" id="cilindraje" name="cilindraje" [(ngModel)]="vehiculo.cilindraje"
+                        required="vehiculo.tipoVehiculo == 'MOTO'">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, ObservableInput } from 'rxjs';
 import { Vehiculo } from './model/vehiculo.model';
 
 @Injectable({
@@ -15,4 +15,13 @@ export class VehiculoService {
   getAll(): Observable<Vehiculo[]>{
     return this.http.get<Vehiculo[]>('http://localhost:8081/parqueadero/listarVehiculosParqueados')
   }
+
+  salidaVehiculo(vehiculo: Vehiculo): Observable<any> {
+    return this.http.post<Vehiculo>('http://localhost:8081/parqueadero/sacarVehiculo',vehiculo)
+  }
+
+  registrarVehiculo(vehiculo : Vehiculo):Observable<any>{
+    return this.http.post<Vehiculo>('http://localhost:8081/parqueadero/ingresarVehiculo',vehiculo)
+  }
+  
 }
