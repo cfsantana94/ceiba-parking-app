@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const routes: Routes = [{ path: 'listar', component: ListarComponent },
 { path: 'registrar', component: RegistrarComponent }];
@@ -38,8 +39,11 @@ const routes: Routes = [{ path: 'listar', component: ListarComponent },
     MatCheckboxModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(routes),
+    MatDialogModule
   ],
   providers: [VehiculoService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
+
 })
 export class AppModule { }
