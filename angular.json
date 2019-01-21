@@ -24,9 +24,8 @@
             ],
             "styles": [
               "src/styles.css"
-              ],
-              "scripts": [
-              ]
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -132,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "prueba"
+  "defaultProject": "prueba",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

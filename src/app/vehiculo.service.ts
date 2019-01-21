@@ -20,8 +20,8 @@ export class VehiculoService {
     return this.http.post<Vehiculo>('http://localhost:8081/parqueadero/sacarVehiculo',vehiculo)
   }
 
-  registrarVehiculo(vehiculo : Vehiculo):Observable<any>{
-    return this.http.post<Vehiculo>('http://localhost:8081/parqueadero/ingresarVehiculo',vehiculo)
+  registrarVehiculo(vehiculo : Vehiculo){
+    return this.http.post('http://localhost:8081/parqueadero/ingresarVehiculo',vehiculo)
   }
   
 }

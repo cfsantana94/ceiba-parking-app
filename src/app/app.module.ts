@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,9 +14,28 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { DialogRegistrarComponent } from './dialog-registrar/dialog-registrar.component';
+import { environment } from '../environments/environment';
 
-const routes: Routes = [{ path: 'listar', component: ListarComponent },
-{ path: 'registrar', component: RegistrarComponent }];
+//ngrx modules
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, metaReducers } from './reducers/reducers';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreRouterConnectingModule, routerReducer} from '@ngrx/router-store';
+
+
+const NGRX_IMPORTS = [
+  StoreModule.forRoot(reducers,{metaReducers}),
+  StoreRouterConnectingModule.forRoot({stateKey:'router'}),
+  EffectsModule.forRoot([]),
+  StoreDevtoolsModule.instrument({
+    name: 'AngularChatNgRx',
+    logOnly: environment.production
+  })
+ ]
+
 
 @NgModule({
   declarations: [
@@ -25,7 +43,9 @@ const routes: Routes = [{ path: 'listar', component: ListarComponent },
     ListarComponent,
     RegistrarComponent,
     HeaderComponent,
-    DialogComponent
+    DialogComponent,
+    NotFoundComponent,
+    DialogRegistrarComponent
   ],
   imports: [
     BrowserModule,
@@ -38,12 +58,13 @@ const routes: Routes = [{ path: 'listar', component: ListarComponent },
     MatButtonModule, 
     MatCheckboxModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(routes),
-    MatDialogModule
+    MatDialogModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [VehiculoService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  entryComponents: [DialogComponent,DialogRegistrarComponent]
 
 })
 export class AppModule { }

@@ -8,8 +8,8 @@
         <tbody>
             <tr mdbTableCol *ngFor="let vehiculo of vehiculos">
                 <td>{{vehiculo.tipoVehiculo}}</td>
-                <td>{{vehiculo.placa}}</td>
-                <td>{{vehiculo.fechaEntrada}}</td>
+                <td>{{vehiculo.placa | uppercase}}</td>
+                <td>{{vehiculo.fechaEntrada | date: 'medium'}}</td>
                 <td>{{vehiculo.cilindraje}}</td>
                 <td>
                     <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="salidaVehiculo(vehiculo)"> Retirar </button>

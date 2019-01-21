@@ -14,6 +14,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./listar.component.css'],
   providers: [NgbModalConfig, NgbModal]
 })
+
+
 export class ListarComponent implements OnInit {
   vehiculos: Vehiculo[];
   mensaje: string;
