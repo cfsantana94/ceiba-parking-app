@@ -35,6 +35,8 @@ export class ListarComponent implements OnInit {
       this.vehiculos = data
     });
   }
+
+  
   salidaVehiculo(vehiculo: Vehiculo) {
 
     this.vehiculoService.salidaVehiculo(vehiculo).subscribe(
