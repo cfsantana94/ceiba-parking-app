@@ -8,18 +8,18 @@ import {
 
 import { environment } from '../../environments/environment';
 
-import {RouterStateUrl} from '../../shared/utils';
+import {RouterStateUrl} from '../../app/shared/utils';
 
 import * as fromRouter from '@ngrx/router-store';
 
 import {storeFreeze} from 'ngrx-store-freeze';
 
-import * as fromAuth from '../auth/reducers/auth.reducers';
-import { FormatInputPathObject } from 'path';
-import { stat } from 'fs';
+import * as fromAuth from '../../app/auth/reducers/auth.reducer';
+//import { FormatInputPathObject } from 'path';
+//import { stat } from 'fs';
 
 export interface State {
-  auth: fromAuth.state;
+  auth: fromAuth.State;
   router: fromRouter.RouterReducerState<RouterStateUrl>;
 } 
 

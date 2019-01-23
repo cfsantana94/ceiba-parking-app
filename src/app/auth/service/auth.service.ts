@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {from, observable} from 'rxjs';
-//import {Vehiculo}
+import {from, observable, Observable} from 'rxjs';
+import {IUser} from '../../interfaces/IUser';
 
 @Injectable({
   providedIn: 'root'
@@ -8,4 +8,8 @@ import {from, observable} from 'rxjs';
 export class AuthService {
 
   constructor() { }
+  
+login(user: IUser): Observable<any>{
+  return from ([true]);
+}
 }

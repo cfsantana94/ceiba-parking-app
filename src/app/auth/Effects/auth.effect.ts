@@ -10,6 +10,7 @@ import{
     LoginUserError , LoggedIn , LogOutAuth
 } from '../actions/auth.action';
 import { ThrowStmt } from '@angular/compiler';
+ 
 
 @Injectable({
     providedIn: 'root'
@@ -32,8 +33,22 @@ export class AuthEffects{
     LoginUser$: Observable<Action> = this.actions$.pipe(
         ofType<LoginUser>(AuthActionTypes.LoginUser),
         tap(v => console.log('loginUser effect', v)),
-        map(data =>{
-            return {type:'LOGIN_API_ERROR', payload:'usuario o clave errados'};
-        })
+        mergeMap(action =>
+            this.authService.login({
+                email: action.payload.user,
+                username:'',
+                password: action.payload.pass})
+        )        
     );
+
+    @Effect()
+    LoggedUser$: Observable<Action> = this.actions$.pipe(
+        ofType<LoggedUser>(AuthActionTypes.LoggedUser),
+        tap(v => console.log('LoggedUser payload', v.payload)),
+        map(data =>{
+            console.log(data);
+            return {type:'', payload:data};
+        })      
+    );
+
 }
